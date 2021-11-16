@@ -120,7 +120,7 @@ Home
 
 [jest]()
 
-[style-components]()
+[less]()
 
 [husky]()
 
