@@ -61,6 +61,7 @@ const getBabelLoader = () => ({
     ]
   }
 })
+const getLessLoader = () => ({ loader: 'less-loader', options: { lessOptions: { javascriptEnabled: true } } }) // 给css自动添加前缀
 const getPostCssLoader = () => ({ loader: 'postcss-loader', options: { postcssOptions: { plugins: [ require('autoprefixer')() ] } } }) // 给css自动添加前缀
 const getImgUrlLoader = () => ({ loader: 'url-loader', options: { limit: 8192, name: '[name].[ext]', outputPath: '/images' } })
 const getFontUrlLoader = () => ({ loader: 'url-loader', options: { limit: 8192, name: '[name].[ext]', outputPath: '/fonts' } })
@@ -75,6 +76,7 @@ module.exports = {
   getThreadLoader,
   getCacheLoader,
   getBabelLoader,
+  getLessLoader,
   getPostCssLoader,
   getImgUrlLoader,
   getFontUrlLoader

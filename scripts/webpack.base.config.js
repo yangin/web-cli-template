@@ -1,5 +1,4 @@
 const { resolve } = require('path')
-const { DefinePlugin } = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const {
@@ -11,6 +10,7 @@ const {
   getThreadLoader,
   getCacheLoader,
   getBabelLoader,
+  getLessLoader,
   getPostCssLoader,
   getImgUrlLoader,
   getFontUrlLoader
@@ -54,13 +54,6 @@ const webpackConfigBase = {
           priority: -10, // 确定模块打入的优先级
           reuseExistingChunk: true, // 使用复用已经存在的模块
           enforce: true
-        },
-        styles: {
-          test: /\.css$/,
-          name: 'styles',
-          priority: 10, // 确定模块打入的优先级
-          chunks: 'all',
-          enforce: true
         }
       }
     }
@@ -79,7 +72,7 @@ const webpackConfigBase = {
         ]
       },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
         exclude: /node_modules/,
         use: [
           {
@@ -87,7 +80,8 @@ const webpackConfigBase = {
           },
           getCacheLoader(),
           'css-loader',
-          getPostCssLoader() // postcss需要放在css之前，其他语言(less、sass等)之后，进行解析
+          getPostCssLoader(), // postcss需要放在css之前，其他语言(less、sass等)之后，进行解析
+          getLessLoader()
         ]
       },
       // loader-image
@@ -112,9 +106,7 @@ const webpackConfigBase = {
     new MiniCssExtractPlugin({
       filename: isProduction ? 'css/[name].[contenthash:8].css' : 'css/[name].css',
       chunkFilename: isProduction ? 'css/[name].[contenthash:8].css' : 'css/[name].css'
-    }),
-    // 优化styled-components开发性能 https://github.com/styled-components/styled-components/blob/master/CHANGELOG.md#v410---2018-11-12、https://github.com/styled-components/styled-components/blob/master/packages/styled-components/src/constants.js#L18
-    new DefinePlugin({ SC_DISABLE_SPEEDY: false })
+    })
   ]
 }
 module.exports = webpackConfigBase
