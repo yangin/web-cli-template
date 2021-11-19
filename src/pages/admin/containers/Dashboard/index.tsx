@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { StyledDashboard } from './styles'
+import './index.less'
 
 type LoginProps = {
   history: Object
@@ -15,14 +15,14 @@ const Login = (props: LoginProps) => {
   }
 
   return (
-    <StyledDashboard>
+    <div className="login">
       <div className="title">
         Dashboard Page
       </div>
       <div>
         <button onClick={onBack}>返回</button>
       </div>
-    </StyledDashboard>
+    </div>
   )
 }
 

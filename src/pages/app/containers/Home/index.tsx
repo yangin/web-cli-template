@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledHome } from './styles'
+import './index.less'
 
 const Home = () => {
   const onSignIn = () => {
@@ -7,7 +7,7 @@ const Home = () => {
   }
 
   return (
-    <StyledHome>
+    <div className="home">
       <div>
         <img className="logo" src="/images/logo.png"></img>
       </div>
@@ -15,7 +15,7 @@ const Home = () => {
       <div>
         <button onClick={onSignIn}>登录/注册</button>
       </div>
-    </StyledHome>
+    </div>
   )
 }
 

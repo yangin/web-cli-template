@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledNotFound } from './styles'
+import './styles.less'
 
 const NotFound = () => {
   const onGoHome = () => {
@@ -7,12 +7,12 @@ const NotFound = () => {
   }
 
   return (
-    <StyledNotFound>
+    <div className="not-found">
       <div className="title">
         NotFound
       </div>
       <button onClick={onGoHome}>返回首页</button>
-    </StyledNotFound>
+    </div>
   )
 }
 
