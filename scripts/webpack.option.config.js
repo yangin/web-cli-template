@@ -14,11 +14,6 @@ const entryConfig = {
     entry: resolve(PATH_SRC_ROOT, 'pages/app'),
     template: 'app.html',
     matchPath: /^\/(app|app\/)/
-  },
-  'admin': {
-    entry: resolve(PATH_SRC_ROOT, 'pages/admin'),
-    template: 'admin.html',
-    matchPath: /^\/(admin|admin\/)/
   }
 }
 
