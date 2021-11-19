@@ -3,7 +3,7 @@ import { StyledHome } from './styles'
 
 const Home = () => {
   const onSignIn = () => {
-    location.href = '/admin'
+    console.log('登录/注册')
   }
 
   return (
